@@ -10,8 +10,8 @@ if __name__ == '__main__':
     response = requests.post('http://' + address + '/v1/')
     assert response.status_code == 200
     uid = response.json()['uid']
-    response = requests.post('http://' + address + '/v1/' + str(uid) + '/', json=test_data)
+    response = requests.put('http://' + address + '/v1/' + str(uid) + '/', json=test_data)
     assert response.status_code == 200
-    response = requests.get('http://' + address + '/v1/' + uid + '/')
+    response = requests.get('http://' + address + '/v1/' + str(uid) + '/')
     assert response.status_code == 200
     assert json.dumps(test_data) == json.dumps(response.json())
