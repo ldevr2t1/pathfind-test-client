@@ -23,5 +23,7 @@ if __name__ == '__main__':
     assert jsoncompare.are_same(test_data, response.json())
     response = requests.delete('http://' + address + '/v1/' + str(uid))
     assert response.status_code == 200
+    response = requests.delete('http://' + address + '/v1/' + str(uid))
+    assert response.status_code == 404
     response = requests.get('http://' + address + '/v1/' + str(uid))
     assert response.status_code == 404
